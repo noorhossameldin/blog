@@ -6,7 +6,6 @@ type Post = {
   body: string;
 };
 
-// Correct type format for App Router's generateMetadata
 export async function generateMetadata({
   params,
 }: {
@@ -21,7 +20,6 @@ export async function generateMetadata({
   };
 }
 
-// Correct type format for page component
 export default async function PostPage({
   params,
 }: {
