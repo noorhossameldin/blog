@@ -6,11 +6,7 @@ type Post = {
   body: string;
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   const post: Post = await res.json();
 
@@ -20,11 +16,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function PostPage({ params }: { params: { id: string } }) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   const post: Post = await res.json();
 
