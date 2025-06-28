@@ -6,14 +6,12 @@ type Post = {
   body: string;
 };
 
-type PostPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-// dynamic metadata function
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+// Correct type format for App Router's generateMetadata
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   const post: Post = await res.json();
 
@@ -23,8 +21,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   };
 }
 
-// actual page component
-export default async function PostPage({ params }: PostPageProps) {
+// Correct type format for page component
+export default async function PostPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   const post: Post = await res.json();
 
