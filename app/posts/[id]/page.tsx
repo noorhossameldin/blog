@@ -4,7 +4,7 @@ type Post = {
   body: string;
 };
 
-export default async function PostPage({
+export default async function PostPageTemp({
   params,
 }: {
   params: { id: string };
