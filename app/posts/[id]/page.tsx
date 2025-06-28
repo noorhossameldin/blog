@@ -4,16 +4,22 @@ type Post = {
   body: string;
 };
 
-export function generateMetadata({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export function generateMetadata({ params }: PageProps) {
   return fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`)
-    .then(res => res.json())
+    .then((res) => res.json())
     .then((post: Post) => ({
       title: `Blog ${post.id} Details`,
       description: post.body.substring(0, 150),
     }));
 }
 
-export default async function PostPage({ params }: { params: { id: string } }) {
+export default async function PostPage({ params }: PageProps) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.id}`);
   const post: Post = await res.json();
 
