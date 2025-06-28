@@ -1,5 +1,3 @@
-import { Metadata } from 'next';
-
 type Post = {
   id: number;
   title: string;
